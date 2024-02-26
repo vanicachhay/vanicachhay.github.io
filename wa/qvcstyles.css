@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica,sans-serif;
+}
+
+.qvc-overlay {
+    width: 100%;
+    height: 100vh;
+    background-image: url('qvcimg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    color: black;
+}
+
+.qvc-overlay-content {
+    display: flex;
+    width: 80%;
+}
+
+.qvc-overlay-box {
+    background-color: rgb(255, 255, 255, 0.5); 
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+}
+
+.qvc-overlay-logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+}
+
+.qvc-overlay-logo img {
+    width: 100%;
+}
+
+.qvc-overlay-content h1 {
+    font-size: 2rem;
+
+    margin-top: 300px;
+}
+
+.qvc-overlay-content p {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+
+
