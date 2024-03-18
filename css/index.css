@@ -6,7 +6,7 @@
   }
   
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
     line-height: 1.6;
     background-image: url('symphony.jpg'); /* Replace 'background-image.jpg' with your image file path */
     background-size: cover;
