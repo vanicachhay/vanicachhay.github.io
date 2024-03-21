@@ -1,4 +1,4 @@
-/* Reset default styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +8,7 @@
   body {
     font-family: 'Times New Roman', Times, serif, sans-serif;
     line-height: 1.6;
-    background-image: url('symphony.jpg'); /* Replace 'background-image.jpg' with your image file path */
+    background-image: url('symphony.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     color: #67615b;
@@ -36,7 +36,7 @@
   }
   
   .concert {
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for readability */
+    background-color: rgba(255, 255, 255, 0.8); 
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
