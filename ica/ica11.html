@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .msgBox {
+    margin: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+</head>
+<body>
+<div class="msgBox">
+    <p>Press this button</p>
+    <button id="showMessageBtn">button</button>
+</div>
+<div class="hidden" id="hiddenMessage">
+  <p> how dare you press my button >:c </p>
+</div>
+
+<script>
+document.getElementById("showMessageBtn").addEventListener("click", function() {
+  document.getElementById("hiddenMessage").classList.remove("hidden");
+});
+</script>
+</body>
+</html>
+
+  
+  
+  
