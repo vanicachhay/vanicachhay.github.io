@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     showAnswerBtn.addEventListener("click", showAnswer);
   
     function getQuote() {
-      console.log("Button clicked"); // Check if button click works
+      console.log("Button clicked"); 
   
       const endpoint = "https://trivia.cyberwisp.com/getrandomchristmasquestion";
   
@@ -31,16 +31,16 @@ document.addEventListener("DOMContentLoaded", function() {
       const answerTextElement = document.getElementById("js-answer-text");
   
       quoteTextElement.textContent = question;
-      answerTextElement.textContent = answer; // Answer is initially hidden
-      answerTextElement.style.display = "none"; // Hide the answer initially
+      answerTextElement.textContent = answer; 
+      answerTextElement.style.display = "none"; 
     }
   
     function showAnswer() {
       const answerTextElement = document.getElementById("js-answer-text");
-      answerTextElement.style.display = "block"; // Show the answer when button is clicked
+      answerTextElement.style.display = "block"; 
     }
     
-    // Initial quote display on page load
+   
     getQuote();
   });
   
