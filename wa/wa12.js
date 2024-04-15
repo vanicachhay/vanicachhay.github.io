@@ -1,17 +1,17 @@
 document.getElementById("getLyricsBtn").addEventListener("click", function() {
     console.log("Button clicked");
-    // Replace 'YOUR_ACCESS_TOKEN' with your actual Genius API access token
+   
     var accessToken = 'j0bsh3-EqsDsiUIPEy6b6UN3qp0d-wWcJxUVUX6Ysppw2_bJrxnDRiuT9qvBEMAT';
 
-    // Replace 'YOUR_SONG_TITLE' with the title of the song you want to search for
+    
     var songTitle = 'SHOULD I BE OK?';
     console.log("Searching for song:", songTitle);
 
-    // Construct the URL for the Genius API search endpoint
+    
     var apiUrl = 'https://api.genius.com/search?q=' + encodeURIComponent(songTitle);
     console.log("API URL:", apiUrl);
 
-    // Make a GET request to the Genius API
+    
     fetch(apiUrl, {
         headers: {
             'Authorization': 'Bearer ' + accessToken
@@ -39,12 +39,12 @@ document.getElementById("getLyricsBtn").addEventListener("click", function() {
     .then(response => response.text())
     .then(html => {
         console.log("HTML:", html);
-        // Parse the HTML response to extract the lyrics
+        
         var parser = new DOMParser();
         var doc = parser.parseFromString(html, 'text/html');
         var lyrics = doc.querySelector('.lyrics').innerText;
 
-        // Display the lyrics in the container
+        
         document.getElementById("lyricsContainer").innerText = lyrics;
     })
     .catch(error => {
@@ -52,34 +52,4 @@ document.getElementById("getLyricsBtn").addEventListener("click", function() {
         console.error('Error:', error.message);
         document.getElementById("lyricsContainer").innerText = 'Error: ' + error.message;
     });
-});
-
-const express = require('express');
-const fetch = require('node-fetch');
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Proxy endpoint
-app.get('/api/genius', async (req, res) => {
-    try {
-        const accessToken = 'YOUR_ACCESS_TOKEN';
-        const songTitle = req.query.title;
-        const apiUrl = `https://api.genius.com/search?q=${encodeURIComponent(songTitle)}`;
-        const response = await fetch(apiUrl, {
-            headers: {
-                'Authorization': 'Bearer ' + accessToken
-            }
-        });
-        const data = await response.json();
-        res.json(data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
-
-// Start server
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
 });
