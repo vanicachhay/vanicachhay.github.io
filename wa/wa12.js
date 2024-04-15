@@ -2,7 +2,7 @@ document.getElementById("getLyricsBtn").addEventListener("click", function() {
     var accessToken = 'j0bsh3-EqsDsiUIPEy6b6UN3qp0d-wWcJxUVUX6Ysppw2_bJrxnDRiuT9qvBEMAT';
 
     // Replace 'YOUR_SONG_TITLE' with the title of the song you want to search for
-    var songTitle = 'Love Story';
+    var songTitle = '378195';
 
     // Construct the URL for the Genius API search endpoint
     var apiUrl = 'https://api.genius.com/search?q=' + encodeURIComponent(songTitle);
