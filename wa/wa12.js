@@ -54,3 +54,32 @@ document.getElementById("getLyricsBtn").addEventListener("click", function() {
     });
 });
 
+const express = require('express');
+const fetch = require('node-fetch');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Proxy endpoint
+app.get('/api/genius', async (req, res) => {
+    try {
+        const accessToken = 'YOUR_ACCESS_TOKEN';
+        const songTitle = req.query.title;
+        const apiUrl = `https://api.genius.com/search?q=${encodeURIComponent(songTitle)}`;
+        const response = await fetch(apiUrl, {
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            }
+        });
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+});
