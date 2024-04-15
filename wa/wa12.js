@@ -4,7 +4,7 @@ document.getElementById("getLyricsBtn").addEventListener("click", function() {
     var accessToken = 'j0bsh3-EqsDsiUIPEy6b6UN3qp0d-wWcJxUVUX6Ysppw2_bJrxnDRiuT9qvBEMAT';
 
     //where you put in a song name 
-    var songTitle = 'YOUR_SONG_TITLE';
+    var songTitle = 'SHOULD I BE OK?';
     console.log("Searching for song:", songTitle);
 
     
