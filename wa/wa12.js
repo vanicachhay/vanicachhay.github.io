@@ -1,25 +1,34 @@
 document.getElementById("getLyricsBtn").addEventListener("click", function() {
+    console.log("Button clicked");
+    // Replace 'YOUR_ACCESS_TOKEN' with your actual Genius API access token
     var accessToken = 'j0bsh3-EqsDsiUIPEy6b6UN3qp0d-wWcJxUVUX6Ysppw2_bJrxnDRiuT9qvBEMAT';
 
     // Replace 'YOUR_SONG_TITLE' with the title of the song you want to search for
-    var songTitle = '378195';
+    var songTitle = 'SHOULD I BE OK?';
+    console.log("Searching for song:", songTitle);
 
     // Construct the URL for the Genius API search endpoint
     var apiUrl = 'https://api.genius.com/search?q=' + encodeURIComponent(songTitle);
-    
+    console.log("API URL:", apiUrl);
+
     // Make a GET request to the Genius API
     fetch(apiUrl, {
         headers: {
             'Authorization': 'Bearer ' + accessToken
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log("Response:", response);
+        return response.json();
+    })
     .then(data => {
+        console.log("Data:", data);
         // Check if search results are found
         if (data.response.hits.length > 0) {
             // Extract the URL of the first search result
             var songUrl = data.response.hits[0].result.url;
-            
+            console.log("Song URL:", songUrl);
+
             // Fetch the lyrics page of the song from Genius website
             return fetch(songUrl);
         } else {
@@ -29,6 +38,7 @@ document.getElementById("getLyricsBtn").addEventListener("click", function() {
     })
     .then(response => response.text())
     .then(html => {
+        console.log("HTML:", html);
         // Parse the HTML response to extract the lyrics
         var parser = new DOMParser();
         var doc = parser.parseFromString(html, 'text/html');
@@ -43,3 +53,4 @@ document.getElementById("getLyricsBtn").addEventListener("click", function() {
         document.getElementById("lyricsContainer").innerText = 'Error: ' + error.message;
     });
 });
+
