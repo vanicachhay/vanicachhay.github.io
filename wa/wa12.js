@@ -1,10 +1,10 @@
 document.getElementById("getLyricsBtn").addEventListener("click", function() {
     console.log("Button clicked");
-   
+    
     var accessToken = 'j0bsh3-EqsDsiUIPEy6b6UN3qp0d-wWcJxUVUX6Ysppw2_bJrxnDRiuT9qvBEMAT';
 
-    
-    var songTitle = 'SHOULD I BE OK?';
+    //where you put in a song name 
+    var songTitle = 'YOUR_SONG_TITLE';
     console.log("Searching for song:", songTitle);
 
     
@@ -23,16 +23,16 @@ document.getElementById("getLyricsBtn").addEventListener("click", function() {
     })
     .then(data => {
         console.log("Data:", data);
-        // Check if search results are found
+        //check if search results are found
         if (data.response.hits.length > 0) {
-            // Extract the URL of the first search result
+            
             var songUrl = data.response.hits[0].result.url;
             console.log("Song URL:", songUrl);
 
-            // Fetch the lyrics page of the song from Genius website
+            
             return fetch(songUrl);
         } else {
-            // If no search results found, display an error message
+            // if no search results found, display an error message
             throw new Error('No lyrics found for the song: ' + songTitle);
         }
     })
@@ -48,7 +48,7 @@ document.getElementById("getLyricsBtn").addEventListener("click", function() {
         document.getElementById("lyricsContainer").innerText = lyrics;
     })
     .catch(error => {
-        // Display any errors that occur during the process
+        // display any errors that occur during the process
         console.error('Error:', error.message);
         document.getElementById("lyricsContainer").innerText = 'Error: ' + error.message;
     });
