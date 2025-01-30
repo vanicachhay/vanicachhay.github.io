@@ -1,0 +1,26 @@
+body {
+    padding: 10px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .intro {
+    text-align: left;
+    width: 700px;
+  }
+  .links {
+    position:absolute;
+    right:100px;
+    top: 1px;
+  }
+  .intro-img {
+    position:absolute;
+    top: 120px;
+    right: 350px;
+  }
+  .history {
+    margin-top: 75px;
+    text-align: left;
+    width: 1000px;
+  }
+  
