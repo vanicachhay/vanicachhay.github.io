@@ -17,8 +17,8 @@ body {
   }
   .links {
     position:absolute;
-    left: 550px;
-    top: 22px;
+    left: 555px;
+    top: 45px;
     font-size: 1.5rem;
   }
   .intro-img {
@@ -32,6 +32,7 @@ body {
   }
   .references {
     position: absolute;
+    text-align: right;
     top:100px;
     right: 40px;
     width: 350px;
