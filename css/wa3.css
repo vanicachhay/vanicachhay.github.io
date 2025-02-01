@@ -8,15 +8,22 @@ body {
     text-align: left;
     width: 700px;
   }
+  .twikipedia {
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    font-size: 3rem;
+
+  }
   .links {
     position:absolute;
-    left: 560px;
-    top: 12px;
+    left: 550px;
+    top: 22px;
     font-size: 1.5rem;
   }
   .intro-img {
     position:absolute;
-    top: 120px;
+    top: 130px;
     right: 400px;
   }
   .history {
