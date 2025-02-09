@@ -1,0 +1,81 @@
+/* General styles for Vanicard*/
+
+body {
+    margin: 0;
+  }
+  
+
+ .vanicard {
+    font-family: "Georgia", Times, 'serif';
+    font-size: 10px;
+    background-color: #ccc;
+    width: 35em;
+    height: 22em;
+    margin: 5em auto;
+    color: white;
+    background-color: rgb(75, 0, 0);
+    border: 0.2em solid rgb(0, 45, 68);
+    border-radius: 1.5em;
+  }
+  .vanicard h2, p {
+    margin: 0;
+  }
+  .vanicard h2 {
+    font-size: 1.75em;
+    line-height: 1.5em
+  }
+  .vanicard article {
+    height: 12em;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .vanicard article img {
+    max-height: 100%;
+    width: 12.5em;
+    float: left;
+  }
+ .vanicard article p {
+    text-align: right;
+    padding: 1em 1em 0 0;
+    line-height: 1.5em;
+ }
+
+
+ .vanicard header {
+    background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.175), rgba(0, 0, 0, 0));
+    border-radius: 1.5em 1.5em 0 0;
+ }
+
+ .vanicard footer {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    background-image: linear-gradient(to top ,rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.175));
+    border-radius: 0 0 1.5em 1.5em;
+ }
+ .vanicard header, footer {
+    height: 2.5em;
+    padding:1em;
+
+ }
+
+ /* styles for container 
+ georgia serif font
+ background color (75, 0, 0)
+ border color (0, 45, 68)
+ font size 10px
+ border 0.2em solid
+ margin 5em
+ */
+
+ /* styles for header and footer 
+ linear gradient
+ padding: 1em
+ font size 1.5em
+ h2, p margin 0
+
+ */
+
+ /* styles for main content 
+ vani image left
+ text align right
+ padding: 1em 1em 0 0
+ */
