@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background: #ccc;
+  }
+  
+  article {
+    width: 210mm;
+    height: 297mm;
+    margin: 20px auto;
+    position: relative;
+    background: 
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 5%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0) 55%, rgba(0, 0, 0, 0.3) 95%), 
+      white;
+    border-top: 1mm solid #ff0000;
+    border-bottom: 1mm solid #ff0000;
+    background-size: contain, contain, cover;
+  }
+  
+  address {
+    position: absolute;
+    bottom: 8mm;
+    right: 20mm;
+  }
+  
+  .logo-image {
+    position: absolute;
+    top: 16mm;
+    left: 20mm;
+    filter: drop-shadow(2px 2px 4px rgb(0, 0, 0));
+  }
+  
+  h1 {
+    position: absolute;
+    top: 12mm;
+    left: 20mm;
+    width: 128px;
+    height: 128px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 44px 0;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  }
+
+  .bottom-image {
+    position: absolute;
+    bottom: 0mm;
+    right: 0.1mm;
+
+  }
+
+  .top-image {
+    position: absolute;
+    right: 0.1mm;
+
+
+  }
+  
+  
