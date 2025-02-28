@@ -1,4 +1,5 @@
 html {
+    font-family: Copperplate, Papyrus, Fantasy;
     font-size: 10px;
 }
 
@@ -7,40 +8,80 @@ body{
     flex-direction: column;
     align-items: center;
     background-color: #fefae0;
+    position: relative;
 }
 nav{
-    height: 50vh;
-    width: 100em;
+    height: 90vh;
+    width: 150em;
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    height:20px;
-    background-color: #606c38;
+    height:60px;
+    background-color: #8fe3ff;
+    align-items: center;
 }
 nav a{
     width:10vw;
     font-size: 2em;
     text-align: center;
     text-decoration: none;
-    color:#e9edc9;
+    color:#000000;
 }
 
 
 img{
-    width:30vw;
-    height: 30vh;
+    width: 612px;
+    height: 419px;
+    position: relative;
+}
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  img:hover {
+      animation: rotate 0.2s infinite linear;
+  }
+.chris {
+    opacity: 0; 
+    width: 612px;
+    height: 419px;
+    transition: opacity 0.5s ease-in-out;
+    top:235px;
+    position:absolute;
+    pointer-events: none;
 }
 
-#red-ball{
-    background-color: #283618;
-    width: 20px;
-    height:20px;
+.ball{
+    background-color: #c41414;
+    width: 100px;
+    height:100px;
     border-radius: 50%;
     position: absolute;
-    left:5vw;
-    top:0;
+    text-align: center;
+    color: white;
+    left:10vw;
+    top:42em;
 }
+
+.ball:hover {
+    background-color: #310101;
+}
+  
+.ball:active ~ .chris{
+    opacity: 1;
+}
+
+
+
 h1 {
     font-size: 6em;
-    color: #283618;
+    color: #061125;
 }
