@@ -109,7 +109,7 @@ h1 {
     line-height: 1.3;
 }
 
-.image-hover-container:hover .image-overlay {
+.image-hover-container:hover .image-overlay .image-hover-container:active .image-overlay {
     opacity: 1;
 }
 
