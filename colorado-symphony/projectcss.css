@@ -59,6 +59,7 @@ h1 {
     object-fit: cover;
     display: block;
     position: relative;
+    overflow:hidden;
 }
 
 .concert-details {
