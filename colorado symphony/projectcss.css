@@ -1,129 +1,151 @@
+
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
+    background-color: #000000;
     color: #333;
     margin: 0;
     padding: 0;
+
 }
 
-nav {
-    height: 20px;
-    max-width: 100%;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height:60px;
-    background-color: #787878;
-    align-items: center;
+h1 {
+    justify-content: center;
 }
 
+.title-img {
+    overflow: hidden;
+    box-sizing: border-box;
+    object-fit: cover;
+    width: 100%;
+    min-width: 160px;
+    height: 500px;  
 
-nav a {
-    
-    font-size: 2em;
-    text-align: center;
-    text-decoration: none;
-    color:#000000;
-    position: -webkit-sticky;
-    position:sticky;
 }
 
 .title{
     display: flex;
     max-height: 10%;
-    flex-direction: row;
+    align-content: center;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
-    .title-img {
-        overflow: hidden;
-    box-sizing: border-box;
+    align-items: center;
+    background-color: #a6a6a6;
 
 }
-}
 
-.concert-container{
+
+.concert-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     padding: 20px;
-    box-sizing: border-box;
+    flex-direction: column;
 }
 
-.concert-card{
-    display: flex;
+.concert-card {
+    position: relative;
     background: white;
-    width: 80%; 
-    max-width: 900px; 
-    min-height: 10%;
+    width: 100%; /* make card narrower */
+    max-width: 1200px;
+    min-height: auto;
     border-radius: 10px;
     overflow: hidden;
-    margin: 15px 0;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out; /* Smooth resizing */
-    box-sizing: border-box;
-}
-
-.concert-info {
-    background: black;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 80px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-.tour-date strong {
-    font-size: 18px;
+    margin: 20px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
 .concert-card-img {
-    width: 30%;  /* Adjusts with screen */
-    min-width: 200px; /* Prevents image from shrinking too much */
+    width: 100%;
+    height: 220px; /* reduce image height */
     object-fit: cover;
-    box-sizing: border-box;
-
+    display: block;
+    position: relative;
 }
-
 
 .concert-details {
-    flex: 1;
-    padding: 20px;
+    padding: 16px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.bottom-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-top: 10px;
 }
- .bottom-card {
+
+.bottom-card h2 {
+    font-size: 1.1rem;
+}
+
+.bottom-card p {
+    font-size: 0.9rem;
+}
+
+.tour-button button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    opacity: 0;
     display: flex;
-    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    text-align: center;
+    transition: opacity 0.4s ease;
+    font-size: 0.75rem;
+    line-height: 1.3;
+}
 
- }
+.image-hover-container:hover .image-overlay {
+    opacity: 1;
+}
 
 
 
-
-
-/* ✅ Mobile View - Fully Responsive Layout */
 @media (max-width: 600px) {
     .concert-card {
-        width: 95%; /* Full screen width */
-        max-width: 500px;
+        width: 90%;
+        max-width: 95%;
     }
 
-    .tour-date {
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-        padding: 10px;
-        text-align: left;
-        font-size: 16px;
+    .concert-card-img {
+        height: 160px; /* reduce image height for mobile */
     }
 
+    .concert-details {
+        padding: 12px;
+        font-size: 0.8rem;
+    }
 
+    .bottom-card h2 {
+        font-size: 1rem;
+    }
+
+    .bottom-card p {
+        font-size: 0.8rem;
+    }
+
+    .tour-button button {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.75rem;
+    }
+
+    .image-overlay {
+        font-size: 0.7rem;
+        padding: 0.4rem;
+    }
 }
-
