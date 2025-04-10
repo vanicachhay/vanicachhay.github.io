@@ -9,7 +9,7 @@ function getQuote() {
   fetch(endpoint)
     .then(response => {
       if (!response.ok) {
-        throw new Error(`error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     })
@@ -19,19 +19,20 @@ function getQuote() {
     })
     .catch(error => {
       console.error('Fetch error:', error);
-      alert('error');
+      alert('Something went wrong.');
     });
 }
 
 
 function displayQuote(data) {
   const quoteText = document.getElementById('js-quote-text');
-
   quoteText.textContent = data.question;
+
 }
 
 
   fetch(endpoint)
     .then(response => response.json());
+
 
 getQuote();
