@@ -1,7 +1,7 @@
 
 const newQuoteButton = document.querySelector('#js-new-quote');
 newQuoteButton.addEventListener('click', getQuote);
-const endpoint = 'https://trivia.cyberwisp.com/getrandomchristmasquestio';
+const endpoint = 'https://trivia.cyberwisp.com/getrandomchristmasquestion';
 
 
 function getQuote() {
