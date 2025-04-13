@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev 12</title>
+    <link rel="stylesheet" href="/css/webDev12.css">
+</head>
+<body>
+    <div class="title-container">
+        <h1 class="rpg-deck-title">
+            <span class="title-letter" style="--delay:0">o</span>
+            <span class="title-letter" style="--delay:1">m</span>
+            <span class="title-letter" style="--delay:2">g</span>
+            <span class="title-spacer"></span>
+            <span class="title-letter" style="--delay:3">s</span>
+            <span class="title-letter" style="--delay:4">l</span>
+            <span class="title-letter" style="--delay:5">a</span>
+            <span class="title-letter" style="--delay:6">y</span>
+        </h1>
+    </div>
+    <div class="deck-container">
+        <div class="card-wrapper">
+            <div class="card card-rpg warrior-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-content">
+                            <div class="warrior-image-container">
+                                <img src="/img/chris.jpg" alt="Warrior Character" class="warrior-image">
+                            </div>
+                            <h2>Chris</h2>
+                            <div class="card-icon">⚔️</div>
+                            <div class="card-stats">
+                                <span>ATK: 8</span>
+                                <span>DEF: 6</span>
+                            </div>
+                            <div class="warrior-class-text">Chris of the Realm</div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-back-title">Chris or Chris</div>
+                        <div class="card-moire"></div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="card card-rpg mage-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-content">
+                            <h2>Chris</h2>
+                            <div class="card-icon">🔮</div>
+                            <div class="card-stats">
+                                <span>MAG: 9</span>
+                                <span>HP: 4</span>
+                            </div>
+                            <div class="mage-class-text">Chris Weaver</div>
+                            <div class="mage-description">master of slaying and serving</div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-back-title">Chris or Chris</div>
+                        <div class="card-moire"></div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="card card-rpg rogue-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-content">
+                            <div class="rogue-image-container">
+                                <img src="/img/chris.jpg" alt="Rogue Character" class="rogue-image">
+                            </div>
+                            <h2>Chris</h2>
+                            <div class="card-icon">🗡️</div>
+                            <div class="card-stats">
+                                <span>SPD: 9</span>
+                                <span>CRT: 7</span>
+                            </div>
+                            <div class="rogue-class-text">Chris</div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-back-title">Chris or Chris</div>
+                        <div class="card-moire"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="typewriter-container">
+        <span class="typewriter-text"></span>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.card-inner').forEach(card => {
+                    card.style.transition = 'transform 0.8s';
+                });
+            }, 300);
+            const messages = [
+                "i should probably study rn",
+                "the only thing getting me through the semester is chris",
+                "i hate calc 2 so much"
+            ];
+            const typewriterEl = document.querySelector('.typewriter-text');
+            let currentMessageIndex = 0;
+            let isDeleting = false;
+            let charIndex = 0;
+    
+            function typeWriter() {
+                const currentMessage = messages[currentMessageIndex];
+                if (!isDeleting && charIndex <= currentMessage.length) {
+                    typewriterEl.textContent = currentMessage.slice(0, charIndex + 1);
+                    charIndex++;
+                    setTimeout(typeWriter, 80);
+                } else if (isDeleting && charIndex >= 0) {
+                    typewriterEl.textContent = currentMessage.slice(0, charIndex);
+                    charIndex--;
+                    setTimeout(typeWriter, 40);
+                } else {
+                    isDeleting = !isDeleting;
+                    if (!isDeleting) {
+                        currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+                    }
+                    setTimeout(typeWriter, isDeleting ? 1500 : 300);
+                }
+            }
+            setTimeout(typeWriter, 3000);
+        });
+    </script>
+    
+</body>
+</html>
