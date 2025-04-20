@@ -1,0 +1,80 @@
+@import url(https://fonts.bunny.net/css?family=syne-mono:400);
+
+* {
+	box-sizing: border-box;
+}
+@property --angle {
+	syntax: "<angle>";
+	initial-value: 270deg;
+	inherits: false;
+}
+
+body {
+	min-height: 100svh;
+	display: grid;
+	place-content: center;
+	background: black;
+	font-family: "Syne Mono", monospace;
+	line-height: 1.5;
+	font-size: 0.9rem;
+	padding: 2rem 1rem;
+}
+.card {
+	--animation-duration: 12s;
+	width: min(100%, 600px);
+	margin-inline: auto;
+	position: relative;
+	display: grid;
+	place-items: center;
+	isolation: isolate;
+	& > p {
+		margin: 0;
+		color: white;
+		font-size: clamp(0.8rem, 2.5vw + 0.04rem, 1rem);
+
+		text-wrap: pretty;
+		border: 1px solid rgba(255 255 255 / 0.5);
+		border-radius: 5px;
+		padding: 1em;
+	}
+	& > img {
+		width: 75%;
+		object-fit: cover;
+		mix-blend-mode: difference;
+		filter: drop-shadow(0 0 5px green);
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background-image: conic-gradient(
+			from var(--angle),
+			rgb(93, 0, 255),
+			rgb(153, 209, 255),
+			rgb(255, 0, 0)
+		);
+		background-position: -100px -200px;
+		background-repeat: no-repeat;
+		background-size: 200% 400%;
+
+		filter: blur(90px) opacity(0.7);
+		border-radius: 50%;
+
+		animation-name: neon-rotate;
+		animation-duration: var(--animation-duration);
+		animation-direction: forwards;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
+}
+
+@keyframes neon-rotate {
+	from {
+		--angle: 0deg;
+	}
+	to {
+		--angle: 360deg;
+	}
+}
