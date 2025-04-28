@@ -1,5 +1,5 @@
 
-//MATH FUNCTION CODE/ BUMPER CODE FROM https://jsfiddle.net/outis/bA8YE/1/
+//MATH FUNCTION CODE/ BUMPER CODE FROM https://jsfiddle.net/outis/bA8YE/1/ 
 Math.Vector = function (x, y) {
     this.x = x;
     this.y = y;
@@ -56,6 +56,7 @@ Math.Vector = function (x, y) {
       return this.clone().diveq(this.length());
     }
   };
+
   //number of digits submitted
   let digitCount = 0;
   //function to generate random hex/color for every spawned circle
@@ -76,7 +77,7 @@ Math.Vector = function (x, y) {
           y: offset.top + $this.outerHeight() / 2
         }, //center of circle
         dist = new Math.Vector(center.x - evt.pageX, center.y - evt.pageY),
-        closest = $this.outerWidth()*1.5; //multiplier of distance added
+        closest = $this.outerWidth()*1.2; //multiplier of distance added
   
     if (dist.length() >= closest) return; //proximity
   
@@ -164,7 +165,7 @@ Math.Vector = function (x, y) {
   //moves circles in random direction times speed
   function randomMove($circle) {
     var randomDirection = Math.random() * Math.PI * 14; 
-    var speed = 25; 
+    var speed = 20; 
   
     var moveX = Math.cos(randomDirection) * speed;
     var moveY = Math.sin(randomDirection) * speed;
@@ -174,7 +175,7 @@ Math.Vector = function (x, y) {
   
     // prevent circles from moving past window
     newLeft = Math.max(0, Math.min(newLeft, $(window).width() - $circle.outerWidth()));
-    newTop = Math.max(150, Math.min(newTop, $(window).height() - 200));
+    newTop = Math.max(150, Math.min(newTop, $(window).height() - 200)); //-200 so doesnt go into title 
   
     $circle.offset({ left: newLeft, top: newTop });
   }
