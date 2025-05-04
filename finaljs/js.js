@@ -168,6 +168,12 @@ Math.Vector = function (x, y) {
       $("#stored").text(""); // Clear stored digits
       digitCount = 0; // Reset digit count
       $(".circle").remove();
+      if (originalGatePos) {
+        $("#gate").offset(originalGatePos);
+      }
+      if (originalResetPos) {
+        $("#reset").offset(originalResetPos);
+      }
       spawnCircles();
       $(".bumper").on("mouseover", beginEvade);
       $(".bumper").on("mouseout", endEvade); 
@@ -186,7 +192,7 @@ Math.Vector = function (x, y) {
     for (let i = 0; i <= 9; i++) {
       let $digit = $('<div class="circle bumper">' + i + '</div>');
       let xPos = Math.random() * ($(window).width() - 60);
-      let yPos = Math.random() * ($(window).height() - 200) + 30;
+      let yPos = Math.random() * ($(window).height() - 200) + 40;
   
       // prevent circles from spawning on the gate
       let gate = $("#gate").offset();
