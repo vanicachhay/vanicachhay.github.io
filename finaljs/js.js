@@ -56,7 +56,8 @@ Math.Vector = function (x, y) {
       return this.clone().diveq(this.length());
     }
   };
-
+  //original positions
+  let originalGatePos, originalResetPos;
   //number of digits submitted
   let digitCount = 0;
   //function to generate random hex/color for every spawned circle
@@ -68,6 +69,37 @@ Math.Vector = function (x, y) {
     }
     return color;
   }
+  // random spawn of boxes when any digit stored
+  function randomizeGateAndReset() {
+    const gate = $("#gate");
+    const reset = $("#reset");
+  
+    const gateW = gate.outerWidth();
+    const gateH = gate.outerHeight();
+    const resetW = reset.outerWidth();
+    const resetH = reset.outerHeight();
+  
+    const padding = 60;
+    const maxWidth = $(window).width();
+    const maxHeight = $(window).height();
+  
+    const gateLeft = Math.random() * (maxWidth - gateW - padding);
+    const gateTop = Math.random() * (maxHeight - gateH - 200) + 150;
+  
+    const resetLeft = Math.random() * (maxWidth - resetW - padding);
+    const resetTop = Math.random() * (maxHeight - resetH - 200) + 150;
+  
+    gate.css({
+      left: gateLeft + 'px',
+      top: gateTop + 'px'
+    });
+  
+    reset.css({
+      left: resetLeft + 'px',
+      top: resetTop + 'px'
+    });
+  }
+  
   
   function evade(evt) {
     var $this = $(this),
@@ -94,16 +126,32 @@ Math.Vector = function (x, y) {
   
     $this.offset(newCorner);
   
-    // gate for storing digits
+    // creates gate for storing digits and adds reset gate for resetting
     let gate = $("#gate").offset();
-    if (
-      newCorner.left > gate.left &&
-      newCorner.left + $this.width() < gate.left + $("#gate").width() &&
-      newCorner.top + $this.height() > gate.top &&
-      newCorner.top < gate.top + $("#gate").height()
-    ) {
+    let reset = $("#reset").offset();
+    let gateW = $("#gate").width();
+    let gateH = $("#gate").height();
+    let resetW = $("#reset").width();
+    let resetH = $("#reset").height();
+
+    let withinBox = (box, w, h) =>
+      newCorner.left > box.left &&
+      newCorner.left + $this.width() < box.left + w &&
+      newCorner.top + $this.height() > box.top &&
+      newCorner.top < box.top + h;
+
+    if (withinBox(gate, gateW, gateH)) {
       storeDigit($this);
+      return;
     }
+
+    if (withinBox(reset, resetW, resetH)) {
+      $this.remove(); // remove the digit
+      resetGame();
+      return;
+    }
+
+    
   }
   //store digit and convert into text
   function storeDigit($el) {
@@ -127,6 +175,7 @@ Math.Vector = function (x, y) {
     }
   
     $el.remove(); //removes circle when it hits gate and calls spawnCircles function to make it harder
+    randomizeGateAndReset();
     spawnCircles();
     $(".bumper").on("mouseover", beginEvade);
     $(".bumper").on("mouseout", endEvade);
@@ -137,7 +186,7 @@ Math.Vector = function (x, y) {
     for (let i = 0; i <= 9; i++) {
       let $digit = $('<div class="circle bumper">' + i + '</div>');
       let xPos = Math.random() * ($(window).width() - 60);
-      let yPos = Math.random() * ($(window).height() - 200) + 150;
+      let yPos = Math.random() * ($(window).height() - 200) + 30;
   
       // prevent circles from spawning on the gate
       let gate = $("#gate").offset();
@@ -147,12 +196,25 @@ Math.Vector = function (x, y) {
       if (xPos >= gate.left && xPos <= gate.left + gateWidth && yPos >= gate.top && yPos <= gate.top + gateHeight) {
         yPos += gateHeight + 100; // if spawned near adds 100 to position
       }
+
+      // prevetns circles from spawning on reset
+      let reset = $("#reset").offset();
+      let resetWidth = $("#reset").outerWidth();
+      let resetHeight = $("#reset").outerHeight();
+
+      if (
+        xPos >= reset.left && xPos <= reset.left + resetWidth &&
+        yPos >= reset.top && yPos <= reset.top + resetHeight
+      ) {
+        yPos += resetHeight + 100;
+      }
+
   
       $digit.css({
         left: xPos + 'px',
         top: yPos + 'px',
-        width: '40px',
-        height: '40px',
+        width: '20px',
+        height: '20px',
         backgroundColor: randomColor()  // random color
       });
       
@@ -175,7 +237,7 @@ Math.Vector = function (x, y) {
   
     // prevent circles from moving past window
     newLeft = Math.max(0, Math.min(newLeft, $(window).width() - $circle.outerWidth()));
-    newTop = Math.max(150, Math.min(newTop, $(window).height() - 200)); //-200 so doesnt go into title 
+    newTop = Math.max(150, Math.min(newTop, $(window).height() - 100)); //-100 so doesnt go into title 
   
     $circle.offset({ left: newLeft, top: newTop });
   }
@@ -187,20 +249,32 @@ Math.Vector = function (x, y) {
   function endEvade() {
     $(this).unbind("mousemove", evade);
   }
-  
-  $(function () {
+  //new function to reset game if balls fall into there
+  function resetGame() {
+    $("#stored").text(""); 
+    digitCount = 0; 
+    $(".circle").remove();
+
+    //when reset goes back to original position
+    if (originalGatePos) {
+      $("#gate").offset(originalGatePos);
+    }
+    if (originalResetPos) {
+      $("#reset").offset(originalResetPos);
+    }
+
     spawnCircles();
     $(".bumper").on("mouseover", beginEvade);
-    $(".bumper").on("mouseout", endEvade);
+    $(".bumper").on("mouseout", endEvade); 
+  }
   
-    $("#resetBtn").click(() => { //reset button sets digits/text to 0 and resets all circles
-      $("#stored").text(""); 
-      digitCount = 0; 
-      $(".circle").remove();
-      spawnCircles();
-      $(".bumper").on("mouseover", beginEvade);
-      $(".bumper").on("mouseout", endEvade); 
-    });
+
+  $(function () {
+    spawnCircles();
+    originalGatePos = $("#gate").offset();
+    originalResetPos = $("#reset").offset();
+    $(".bumper").on("mouseover", beginEvade);
+    $(".bumper").on("mouseout", endEvade);
   
   
   });
