@@ -159,7 +159,7 @@ Math.Vector = function (x, y) {
       $("body").append($digit); 
   
       // add random movement every few seconds
-      setInterval(() => randomMove($digit), 200);
+      setInterval(() => randomMove($digit), 150);
     }
   }
   //moves circles in random direction times speed
